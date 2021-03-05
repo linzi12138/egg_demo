@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>首页</title>
+  <link rel="stylesheet" type="text/css" href="/public/css/index.css">
+  <script src="//cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+
+<body>
+  nunjucks 模板渲染语法
+   <ol>
+    {% for item in res %}
+    <li>
+      <span>title：{{item.title}}</span>&nbsp;/
+      <span>summary：{{item.title}}</span>&nbsp;/
+      <span>content：{{item.content}}</span>&nbsp;/
+      <span>summary：{{item.createTime}}</span>
+    </li>
+    {% endfor %}
+  </ol> 
+
+
+  <!-- <h3>文章列表</h3>
+  <div class="list" id="app">
+    <table>
+      <thead>
+        <th>title</th>
+        <th>summary</th>
+        <th>content</th>
+        <th>summary</th>
+      </thead>
+      <tbody>
+        <tr>{% raw %}{{message}}{% endraw %}</tr>
+      </tbody>
+    </table>
+  </div> -->
+  <img src="/public/images/logo.svg" alt=""><!-- 访问静态资源 -->
+  <script src="/public/js/index.js"></script>
+</body>
+
+</html>

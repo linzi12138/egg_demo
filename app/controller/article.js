@@ -1,23 +1,21 @@
 const Controller = require('egg').Controller;
 
 class ArticleController extends Controller {
-	//同步操作函数async
 	async create(){
 		const {ctx} = this;
-		console.log(ctx.request.body)
 		const res = await ctx.service.article.create(ctx.request.body);
-		console.log(res)
-		if (res) {
-			ctx.body = {
-				status: 200,
-				data: res
-			}
-		}else {
-			ctx.body = {
-				status: 500,
-				message: '保存出错'
-			}
-		}
+		ctx.helper.success(ctx,res)
+	}
+	async query(){
+		const {ctx,app} = this;
+		const {id} = ctx.params;
+		const res = await app.mysql.get('article',{id});
+		ctx.helper.success(ctx,res)
+	}
+	async update(){
+		const {ctx,app} = this;
+		const res = await app.mysql.update('article',ctx.request.body);
+		ctx.helper.success(ctx,res)
 	}
 }
 

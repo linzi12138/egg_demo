@@ -2,6 +2,8 @@
 
 'use strict';
 
+// const path = require('path');
+
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -16,7 +18,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1614751047678_291';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = ['auth'];
 
   config.mysql = {
     // 单数据库信息配置
@@ -42,6 +44,20 @@ module.exports = appInfo => {
   config.security = {
     csrf: false
   };
+
+  //配置默认模板引擎
+  config.view = {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.html': 'nunjucks' //左边写成.html后缀，会自动渲染.html文件
+    }
+  };
+
+  config.jwt = {
+    secret: '6666', //自定义token的加密条件字符串，可按各自的需求填写
+  };
+
+  config.authWhiteList = ['/login']
 
   // add your user config here
   const userConfig = {
