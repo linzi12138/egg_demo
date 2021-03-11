@@ -12,6 +12,7 @@ module.exports = (options,app)=>{
 			let token = ctx.headers.token || '';
 			//截取token，因为jwt默认需要前端传token前面加上"Bearer ",这里截取掉
 			token = token.substring(7);
+			console.log(token)
 			try {
 				//解析token
 				const decode = await app.jwt.verify(token,app.config.jwt.secret);
@@ -19,6 +20,7 @@ module.exports = (options,app)=>{
 				ctx.state.userinfo = decode;
 				await next();
 			} catch(e) {
+				console.log(e)
 				ctx.helper.fail(ctx,'登陆失效',401);
 			}
 		}

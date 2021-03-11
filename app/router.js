@@ -12,4 +12,7 @@ module.exports = app => {
   router.post('/article/create', controller.article.create);
   router.get('/article/:id', controller.article.query);
   router.put('/article/update', controller.article.update);
+
+  //文件上传
+  router.post('/upload',controller.upload.fileUpload);
 };

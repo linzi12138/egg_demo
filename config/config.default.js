@@ -59,6 +59,14 @@ module.exports = appInfo => {
 
   config.authWhiteList = ['/login']
 
+  // 配置上传
+  config.multipart = {
+    fileSize: '50mb',
+    mode: 'file',
+    fileExtensions: ['.jpg', '.png'], // 扩展几种上传的文件格式
+  };
+
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
